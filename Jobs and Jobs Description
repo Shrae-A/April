@@ -1,0 +1,75 @@
+SELECT 
+  CASE 
+    WHEN LOWER(location) = 'melbourne' THEN 'Melbourne'
+    WHEN LOWER(location) = 'sydney' THEN 'Sydney'
+    ELSE 'Rest of Australia'
+  END AS region,
+  COUNT(*) AS job_count
+FROM jobs
+GROUP BY 
+  CASE 
+    WHEN LOWER(location) = 'melbourne' THEN 'Melbourne'
+    WHEN LOWER(location) = 'sydney' THEN 'Sydney'
+    ELSE 'Rest of Australia'
+  END
+ORDER BY job_count DESC;
+
+
+
+
+
+
+
+--------------------
+SELECT 'Excel' AS skill, COUNT(*) AS job_count
+FROM jobs_description
+WHERE LOWER(job_description) LIKE '%excel%'
+
+UNION ALL
+
+SELECT 'Power BI', COUNT(*)
+FROM jobs_description
+WHERE LOWER(job_description) LIKE '%powerbi%' OR LOWER(job_description) LIKE '%power bi%'
+
+UNION ALL
+
+SELECT 'Python', COUNT(*)
+FROM jobs_description
+WHERE LOWER(job_description) LIKE '%python%'
+
+UNION ALL
+
+SELECT 'SQL', COUNT(*)
+FROM jobs_description
+WHERE LOWER(job_description) LIKE '%sql%';
+-----------
+
+WITH job_skills AS (
+    SELECT job_description
+    FROM jobs_description
+)
+SELECT 'Excel' AS skill, COUNT(*) AS job_count
+FROM job_skills
+WHERE LOWER(job_description) LIKE '%excel%'
+
+UNION ALL
+
+SELECT 'Power BI', COUNT(*)
+FROM job_skills
+WHERE LOWER(job_description) LIKE '%powerbi%' OR LOWER(job_description) LIKE '%power bi%'
+
+UNION ALL
+
+SELECT 'Python', COUNT(*)
+FROM job_skills
+WHERE LOWER(job_description) LIKE '%python%'
+
+UNION ALL
+
+SELECT 'SQL', COUNT(*)
+FROM job_skills
+WHERE LOWER(job_description) LIKE '%sql%';
+-------------
+
+
+
