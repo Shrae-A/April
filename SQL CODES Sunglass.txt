@@ -1,0 +1,147 @@
+SQL CODES
+
+MALE FEMALE COUNT
+
+Select
+gender,count (gender)as Gender Count
+from users
+group by gender;
+
+---------------------------------------------------
+
+MIN and MAX AGE OF USERS
+
+
+Select *
+from users
+Order by age asc;
+
+Select *
+from users
+Order by age desc;
+
+----------------------------------------------------------------
+WHICH PLATFROM BUYERS ARE BUYING
+Select
+from_platform, count(from_platform) as Platform
+From users
+Group by from_platform;
+-------------------------------
+
+PAYMENT TYPE
+
+Select
+payment_type, count(payment_type) as Number 
+From orders
+Group by payment_type
+order by payment_type asc;
+---------------------------
+
+TOP 10 Brands
+select 
+brand, count(brand) as Brand_Count
+from products
+Group by brand
+Order by Brand_Count desc
+LIMIT 10;
+------------------------
+JOIN
+
+ORDER AND PRODUCT TABLE
+
+Select 
+orders.item_id,user_id, products.brand,product_name,price
+from orders
+join
+products on orders.item_id= products.item_id;
+
+=========================================
+SELECT 
+    o.user_id,
+    o.order_id
+    u.age,
+    u.gender,
+    u.post_code,
+    u.country,
+    
+    
+    o.item_id,
+    p.brand,
+    p.product_name,
+    p.price,
+    
+   
+  
+    o.payment_type
+
+FROM 
+    orders o
+JOIN 
+    users u ON o.user_id = u.user_id
+JOIN 
+    products p ON o.item_id = p.item_id;
+
+=================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+===============ERROR CODES=============================
+
+select
+o.user_id
+u.age
+u.gender
+u.post_code
+u.country
+u.platform
+
+o.item_id
+p.brand
+p.product_name
+p.price
+
+o.purchase_date
+o.payment_type
+o.order_id
+
+from
+orders o
+join
+users u on o.user_id=u.user_id
+join
+products p on o.item_id=p.item_id;
+
+
+=====4
+p.brand
+p.product_name
+p.price
+u.age
+u.gender
+u.post_code
+p.brand
+p.product_name
+p.price
+u.age
+u.gender
+u.post_code
+
+
+
+
+
